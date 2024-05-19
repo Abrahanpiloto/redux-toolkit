@@ -1,19 +1,12 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.app {
-  margin-top: 4rem;
-  color: aliceblue;
-}
-
-body {
-  background-color: #1d1d2b;
+/* body {
+  background-color: #10162a;
   display: flex;
   justify-content: center;
-}
+} */
 
 .error {
   background-color: #cf6679;
@@ -27,14 +20,14 @@ body {
 /* Estilos para el modal */
 .modal {
   position: fixed;
-  top: 50%;
+  top: 20%;
   left: 50%;
   margin-top: 3.5rem;
   transform: translate(-50%, -50%);
   background-color: #cf6679;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 5px 5px 5px rgba(243, 240, 240, 0.911);
+  box-shadow: 5px 5px 5px rgba(210, 200, 200, 0.911);
 }
 
 .modal-content {

@@ -60,21 +60,31 @@ const TaskForm = () => {
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="bg-zinc-800 max-w-md p-7">
+        <label htmlFor="title" className="block text-xs font-bold mb-2">
+          Task:
+        </label>
         <input
           name="title"
           type="text"
           placeholder="title"
           onChange={handleChange}
           value={task.title}
+          className="w-full p-2 rounded-md bg-zinc-500 mb-3"
         />
+        <label htmlFor="title" className="block text-xs font-bold mb-2">
+          Description:
+        </label>
         <textarea
           name="description"
           placeholder="description"
           onChange={handleChange}
           value={task.description}
+          className="w-full p-2 rounded-md bg-zinc-500 mb-2"
         ></textarea>
-        <button>Save</button>
+        <button className="bg-indigo-700 px-3 py-1 rounded-md font-medium hover:bg-indigo-600">
+          Save
+        </button>
       </form>
       {error && <div className="error">{error}</div>}
     </>

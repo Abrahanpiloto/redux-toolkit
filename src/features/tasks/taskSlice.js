@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 //estado inicial de la app con dos tareas de ejemplo
 const initialState = [
   {
-    title: "Task 1",
+    title: "Task 1 Example",
     description: "Task one",
     completed: false,
     id: "1",
   },
   {
-    title: "Task 2",
+    title: "Task 2 Example",
     description: "Task two",
     completed: false,
     id: "2",
