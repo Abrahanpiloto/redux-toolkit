@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.app {
+  margin-top: 4rem;
+  color: aliceblue;
+}
+
+body {
+  background-color: #1d1d2b;
+  display: flex;
+  justify-content: center;
+}
+
+.error {
+  background-color: #cf6679;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 1rem;
+  border-radius: 8px;
+  margin: 1.5rem;
+}
+
+/* Estilos para el modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: 3.5rem;
+  transform: translate(-50%, -50%);
+  background-color: #cf6679;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 5px 5px 5px rgba(243, 240, 240, 0.911);
+}
+
+.modal-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #1d1d2b;
+}
+
+.cancel {
+  background-color: green;
+  color: rgb(10, 10, 10);
+  text-transform: uppercase;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.confirm {
+  background-color: red;
+  color: rgb(10, 10, 10);
+  text-transform: uppercase;
+  padding: 8px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+.confirm:hover {
+  background-color: rgb(240, 140, 140);
+}
+
+.cancel:hover {
+  background-color: rgb(113, 240, 145);
+}
