@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { addTask, editTask } from "../features/tasks/taskSlice";
 import { useNavigate, useParams } from "react-router-dom";
+import SteinStore from "stein-js-client"; // Importa SteinStore
 
 const TaskForm = () => {
   // aqui se guardara lo q el usuario escribira en los inputs:
@@ -31,32 +32,62 @@ const TaskForm = () => {
       setError("Debes escribir en ambos campos");
       return;
     }
-    if (params.id) {
-      dispatch(editTask(task));
-    } else {
-      //si todos los campos tienen algo agrega la tarea:
-      dispatch(
-        addTask({
-          ...task,
+    // Suponiendo que ya tienes el token de acceso
+    const store = new SteinStore(
+      "https://api.steinhq.com/v1/storages/664a6ccf4a642363122c6915"
+    ); // Reemplaza "URL_DE_LA_API" con la URL copiada de Stein
+
+    // Envía los datos a Google Sheets
+    store
+      .append("tareas", [
+        {
+          title: task.title,
+          description: task.description,
           id: Date.now(), //genera un nuevo ID unico para la tarea
-        })
-      );
-    }
+        },
+      ])
+      .then((res) => {
+        console.log(res);
+        // Limpia el formulario y maneja el mensaje de éxito
+        setTask({
+          title: "",
+          description: "",
+        });
+        setError("");
+      })
+      .catch((err) => {
+        console.error(err);
+        setError("Error al enviar los datos.");
+      });
     navigate("/");
-
-    setTask({
-      title: "",
-      description: "",
-    });
-
-    setError(""); // resetea el msj de error:
   };
 
-  useEffect(() => {
-    if (params.id) {
-      setTask(tasks.find((task) => task.id === params.id));
-    }
-  }, []);
+  //   if (params.id) {
+  //     dispatch(editTask(task));
+  //   } else {
+  //     //si todos los campos tienen algo agrega la tarea:
+  //     dispatch(
+  //       addTask({
+  //         ...task,
+  //         id: Date.now(), //genera un nuevo ID unico para la tarea
+  //       })
+  //     );
+  //   }
+  //   navigate("/");
+
+  //   setTask({
+  //     title: "",
+  //     description: "",
+  //   });
+
+  //   setError(""); // resetea el msj de error:
+  // };
+
+  // useEffect(() => {
+  //   if (params.id) {
+  //     setTask(tasks.find((task) => task.id === params.id));
+  //   }
+  // }, []);
 
   return (
     <>
