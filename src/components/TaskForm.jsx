@@ -62,17 +62,17 @@ const TaskForm = () => {
     navigate("/");
   };
 
-  //   if (params.id) {
-  //     dispatch(editTask(task));
-  //   } else {
-  //     //si todos los campos tienen algo agrega la tarea:
-  //     dispatch(
-  //       addTask({
-  //         ...task,
-  //         id: Date.now(), //genera un nuevo ID unico para la tarea
-  //       })
-  //     );
-  //   }
+  // if (params.id) {
+  //   dispatch(editTask(task));
+  // } else {
+  //   //si todos los campos tienen algo agrega la tarea:
+  //   dispatch(
+  //     addTask({
+  //       ...task,
+  //       id: Date.now(), //genera un nuevo ID unico para la tarea
+  //     })
+  //   );
+  // }
   //   navigate("/");
 
   //   setTask({

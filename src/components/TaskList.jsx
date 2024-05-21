@@ -1,16 +1,32 @@
 import { useSelector, useDispatch } from "react-redux";
 import { deleteTask } from "../features/tasks/taskSlice";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ConfirmationModal from "./ConfirmationModal";
 import { Link } from "react-router-dom";
 
 const TaskList = () => {
-  const tasks = useSelector((state) => state.tasks);
+  // const tasks = useSelector((state) => state.tasks);
 
   const dispatch = useDispatch();
-
+  const [tasks, setTasks] = useState([]);
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedTaskId, setSelectedTaskId] = useState(null);
+
+  async function fetchTasksGoogleSheets(sheetName) {
+    const apiUrl = `https://api.steinhq.com/v1/storages/664a6ccf4a642363122c6915/${sheetName}`;
+    const response = await fetch(apiUrl);
+
+    const data = await response.json();
+    return data;
+  }
+
+  useEffect(() => {
+    const loadTasks = async () => {
+      const fetchedTasks = await fetchTasksGoogleSheets("tareas");
+      setTasks(fetchedTasks);
+    };
+    loadTasks();
+  }, []);
 
   const handleDelete = (id) => {
     setSelectedTaskId(id);
